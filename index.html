@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Speed Reader</title>
+		
+		<style>
+			#btngrp {
+				text-align: center;
+			}
+			
+			textarea {
+				width: 400px;
+				height: 400px;
+				font-size: 14px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+		
+		<script src="jquery-3.4.1.min.js"></script>
+		<script src="speedreader.js"></script>
+	</head>
+	<body>
+		<div id="btngrp">
+			<input id="play" type="button" value="Play"/>
+			<input id="pause" type="button" value="Pause"/>
+			<input id="restart" type="button" value="Restart"/>
+			<input id="clear" type="button" value="Clear"/>
+		</div>
+		
+		<textarea placeholder="Enter text here..."></textarea>
+	</body>
+</html>
