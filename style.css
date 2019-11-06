@@ -1,0 +1,30 @@
+#buttonarea {
+    text-align: center;
+}
+
+#textfield {
+    width: 80px;
+}
+
+textarea {
+    width: 400px;
+    height: 400px;
+    font-size: 14px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    position: absolute;
+    left: 50%;
+    margin-left: -225px;
+    width: 450px;
+    height: 250px;
+    background: red;
+    border: 3px solid black;
+}
