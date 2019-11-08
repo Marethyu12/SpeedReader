@@ -10,42 +10,52 @@ function onLoad2() {
     var wpm = localStorage.getItem("wpm");
     var words = localStorage.getItem("txt").split(" ");
     
+    var b = true;
     var index = -1;
     var delay = 60000 / wpm;
     var intrvl;
     var intrvlRunning = false;
     var paused = false;
     
-    $("#play").click(() => {
-        if (!intrvlRunning) {
-            intrvlRunning = true;
+    $("#togglebutton").click(() => {
+        if (b) {
+            if (!intrvlRunning) {
+                intrvlRunning = true;
+                
+                intrvl = setInterval(() => {
+                    if (paused) {
+                        return;
+                    }
+                    
+                    if (index == words.length) {
+                        index = -1;
+                        intrvlRunning = false;
+                        
+                        $("#togglebutton").val("Play");
+                        b = true;
+                        
+                        clearInterval(intrvl);
+                    }
+                    
+                    ++index;
+                    
+                    $("#slider").val(index);
+                    $("#slider").trigger("change");
+                    $("#box").html(words[index]);
+                }, delay);
+            }
             
-            intrvl = setInterval(() => {
-                if (paused) {
-                    return;
-                }
-                
-                if (index == words.length) {
-                    index = -1;
-                    intrvlRunning = false;
-                    clearInterval(intrvl);
-                }
-                
-                ++index;
-                
-                $("#slider").val(index);
-                $("#slider").trigger("change");
-                $("#box").html(words[index]);
-            }, delay);
+            if (paused) {
+                paused = false;
+            }
+            
+            $("#togglebutton").val("Pause");
+            b = false;
+        } else {
+            paused = true;
+            $("#togglebutton").val("Play");
+            b = true;
         }
-        
-        if (paused) {
-            paused = false;
-        }
-    });
-    
-    $("#pause").click(() => {
-        paused = true;
     });
     
     $("#slider").attr("min", "0");
@@ -54,5 +64,7 @@ function onLoad2() {
         paused = true;
         index = parseInt($("#slider").val());
         $("#box").html(words[index]);
+        $("#togglebutton").val("Play");
+        b = true;
     });
 }
