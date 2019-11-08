@@ -35,12 +35,16 @@ function stop() {
 
 function onLoad1() {
     $("#spreed").click(() => {
-        words = $("textarea").val().split(" ");
+        localStorage.setItem("words", $("textarea").val().split(" "));//
+        //words = $("textarea").val().split(" ");
+        console.log(words);
         open("spreeder.html", "_self");
     });
 }
 
 function onLoad2() {
+    words = localStorage.getItem("words");
+    
     $("#play").click(() => {
         console.log("foo");
     });
